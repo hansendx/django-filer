@@ -10,7 +10,6 @@ from django.core.files.base import ContentFile
 from django.db import models
 from django.urls import NoReverseMatch, reverse
 from django.utils import timezone
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .. import settings as filer_settings
@@ -47,7 +46,6 @@ def is_public_default():
     return filer_settings.FILER_IS_PUBLIC_DEFAULT
 
 
-@python_2_unicode_compatible
 class File(PolymorphicModel, mixins.IconsMixin):
     file_type = 'File'
     _icon = "file"
