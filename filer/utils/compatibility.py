@@ -18,11 +18,7 @@ def truncate_words(s, num, end_text='...'):
     return Truncator(s).words(num, truncate=truncate)
 
 
-truncate_words = keep_lazy(truncate_words, six.text_type)
-
-
-if not six.PY3:
-    fs_encoding = sys.getfilesystemencoding() or sys.getdefaultencoding()
+truncate_words = keep_lazy(truncate_words, str)
 
 
 # copied from django.utils._os (not present in Django 1.4)
@@ -30,8 +26,6 @@ def upath(path):
     """
     Always return a unicode path.
     """
-    if six.PY2 and not isinstance(path, six.text_type):
-        return path.decode(fs_encoding)
     return path
 
 

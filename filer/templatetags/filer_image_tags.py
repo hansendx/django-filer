@@ -4,7 +4,6 @@ from __future__ import absolute_import
 import re
 
 from django.template import Library
-from django.utils import six
 
 
 register = Library()
@@ -37,7 +36,7 @@ def _recalculate_size(size, index, divisor=0, padding=0,
 
 def _resize(original_size, index, divisor=0, padding=0,
             keep_aspect_ratio=False):
-    if isinstance(original_size, six.text_type):
+    if isinstance(original_size, str):
         m = RE_SIZE.match(original_size)
         if m:
             original_size = (int(m.group(1)), int(m.group(2)))
